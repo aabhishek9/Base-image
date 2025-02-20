@@ -26,8 +26,8 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t ${{ secrets.base-image-451513 }}.pkg.dev/my-docker-repository/base-image:latest .
+        docker build -t gcr.io/${{ secrets.base-image-451513 }}.pkg.dev/my-docker-repository/base-image:latest .
 
     - name: Push Docker Image to GCP Artifact Registry
       run: |
-        docker push ${{ secrets.base-image-451513 }}.pkg.dev/my-docker-repository/base-image:latest
+        docker push gcr.io/${{ secrets.base-image-451513 }}.pkg.dev/my-docker-repository/base-image:latest
