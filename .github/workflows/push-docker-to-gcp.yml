@@ -15,7 +15,7 @@ jobs:
 
     - name: Log in to GCP Artifact Registry
       env: 
-        keyfile: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+        keyfile: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY1 }}
       run: |-
          echo ${keyfile} | docker login -u _json_key --password-stdin https://us-east1-docker.pkg.dev
 
