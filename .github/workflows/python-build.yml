@@ -1,4 +1,4 @@
-name: Build and Push Docker Image to GCP Artifact Registry
+name: Python build
 
 on:
   push:
@@ -21,8 +21,8 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t us-east1-docker.pkg.dev/base-image-451513/my-docker-repository/base-image:1.0 .
+        docker build -t us-east1-docker.pkg.dev/base-image-451513/my-docker-repository/python/python-image:1.0 .
 
     - name: Push Docker Image to GCP Artifact Registry
       run: |
-        docker push us-east1-docker.pkg.dev/base-image-451513/my-docker-repository/base-image:1.0
+        docker push us-east1-docker.pkg.dev/base-image-451513/my-docker-repository/python/python-image:1.0
