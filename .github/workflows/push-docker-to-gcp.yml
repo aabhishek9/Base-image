@@ -3,7 +3,7 @@ name: Build and Push Docker Image to GCP Artifact Registry
 on:
   push:
     branches:
-      - main
+      - aabhishek9-patch-1
 
 jobs:
   build:
