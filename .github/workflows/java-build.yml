@@ -1,0 +1,28 @@
+name: Java build
+
+on:
+  push:
+    branches:
+      - aabhishek9-patch-1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Log in to GCP Artifact Registry
+      env: 
+        keyfile: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY1 }}
+      run: |-
+         echo ${keyfile} | docker login -u _json_key --password-stdin https://us-east1-docker.pkg.dev
+
+    - name: Build Docker Image
+      run: |
+        docker build -t us-east1-docker.pkg.dev/base-image-451513/my-docker-repository/java/java-image:1.0 ./java
+
+    - name: Push Docker Image to GCP Artifact Registry
+      run: |
+        docker push us-east1-docker.pkg.dev/base-image-451513/my-docker-repository/java/java-image:1.0
