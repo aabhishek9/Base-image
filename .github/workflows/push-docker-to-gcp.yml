@@ -22,7 +22,11 @@ jobs:
         keyfile: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
     - name: Log in to GCP Artifact Registry
-      run: gcloud auth configure-docker ${{ secrets.base-image-451513 }}.pkg.dev
+      env: 
+        keyfile: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+#      run: gcloud auth configure-docker ${{ secrets.base-image-451513 }}.pkg.dev
+      run: |-
+         echo ${keyfile} | docker login -u _json_key --password-stdin https://us-east1-docker.pkg.dev
 
     - name: Build Docker Image
       run: |
